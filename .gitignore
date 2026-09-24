@@ -1,0 +1,8 @@
+node_modules/
+out/
+release/
+coverage/
+test-results/
+.react-doctor-report.json
+*.log
+.debug-journal.md

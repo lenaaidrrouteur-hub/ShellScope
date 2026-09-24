@@ -1,0 +1,64 @@
+{
+  "name": "shellscope",
+  "version": "0.1.0",
+  "description": "Diagnostic visuel et sûr du PATH et des shells Windows",
+  "main": "out/main/index.js",
+  "author": "Francis",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/electron-vite/bin/electron-vite.js dev",
+    "browser:dev": "bun src/browser/dev-server.ts",
+    "build": "node node_modules/typescript/bin/tsc --noEmit && node node_modules/electron-vite/bin/electron-vite.js build",
+    "test": "node node_modules/vitest/vitest.mjs run",
+    "test:e2e": "node node_modules/playwright/cli.js test",
+    "check": "node node_modules/@biomejs/biome/bin/biome check . && node node_modules/typescript/bin/tsc --noEmit && node node_modules/vitest/vitest.mjs run",
+    "package:win": "bun run build && node node_modules/electron-builder/cli.js --win nsis"
+  },
+  "dependencies": {
+    "@fluentui/react-icons": "latest",
+    "ky": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@playwright/test": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "electron-vite": "latest",
+    "jsdom": "latest",
+    "react-grab": "latest",
+    "react-scan": "latest",
+    "typescript": "~5.9.3",
+    "vite": "latest",
+    "vitest": "latest"
+  },
+  "build": {
+    "appId": "ca.francis.shellscope",
+    "productName": "ShellScope",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
